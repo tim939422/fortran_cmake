@@ -1,6 +1,7 @@
 compiler/build/
 fftw/build/
-fortuno/build/
+unittest/build/
+*.tar.gz
 
 # Prerequisites
 *.d

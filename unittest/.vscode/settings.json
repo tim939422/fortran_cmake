@@ -1,0 +1,4 @@
+{
+    "fortran.linter.modOutput": "${workspaceFolder}/.modules",
+    "fortran.linter.includePaths": ["${workspaceFolder}/build/debug/_deps/fortuno-build/src/modules"]
+}

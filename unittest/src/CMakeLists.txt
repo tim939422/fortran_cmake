@@ -1,0 +1,20 @@
+# Add library target
+add_library(mylib mylib.f90)
+
+set_target_properties(mylib PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_BINARY_DIR}/modules)
+target_include_directories(mylib PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/modules>
+    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+)
+
+# Install
+install(TARGETS mylib
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+)
+
+install(DIRECTORY ${CMAKE_BINARY_DIR}/modules/
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+    FILES_MATCHING PATTERN "*.mod"
+)
