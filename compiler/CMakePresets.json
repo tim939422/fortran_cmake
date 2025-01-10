@@ -1,0 +1,58 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "base",
+      "displayName": "Base Configuration",
+      "description": "Base configuration for all builds",
+      "generator": "Unix Makefiles",
+      "binaryDir": "${sourceDir}/build/${presetName}"
+    },
+    {
+      "name": "base-release",
+      "displayName": "Base Release Build",
+      "description": "Base configuration for Release builds",
+      "inherits": "base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "base-debug",
+      "displayName": "Base Debug Build",
+      "description": "Base configuration for Debug builds",
+      "inherits": "base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "gcc-release",
+      "displayName": "GCC Release Build",
+      "description": "Release build using GCC toolchain",
+      "inherits": "base-release",
+      "toolchainFile": "${sourceDir}/cmake/gcc-toolchain.cmake"
+    },
+    {
+      "name": "gcc-debug",
+      "displayName": "GCC Debug Build",
+      "description": "Debug build using GCC toolchain",
+      "inherits": "base-debug",
+      "toolchainFile": "${sourceDir}/cmake/gcc-toolchain.cmake"
+    },
+    {
+      "name": "intel-release",
+      "displayName": "Intel Release Build",
+      "description": "Release build using Intel toolchain",
+      "inherits": "base-release",
+      "toolchainFile": "${sourceDir}/cmake/intel-toolchain.cmake"
+    },
+    {
+      "name": "intel-debug",
+      "displayName": "Intel Debug Build",
+      "description": "Debug build using Intel toolchain",
+      "inherits": "base-debug",
+      "toolchainFile": "${sourceDir}/cmake/intel-toolchain.cmake"
+    }
+  ]
+}
